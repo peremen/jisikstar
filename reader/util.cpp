@@ -12,7 +12,7 @@ namespace Snotra {
     QString formatDioDictString(QString str) {
         // %(F|K|P|M)
         // %(B|b|I|i|T|t|C[0-9]|c[0-9]|D|d|E|e|Z[0-9]|z[0-9])
-        // %(H|h|X|x|O|o|Y|y|W[0-9]|w[0-9])
+        // %(H|h|X|x|O|o|Y|y|W[0-9]|w[0-9]|Q|q)
 
         // %F: Level marker
         // %K: Keyword
@@ -109,6 +109,10 @@ namespace Snotra {
         // %W[0-9]-%w[0-9]: alternative meaning, nothing special
         str.replace(QRegularExpression("%W[0-9]"), "");
         str.replace(QRegularExpression("%w[0-9]"), "");
+
+        // %Q-%q: Chinese-Korean dictionary, Korean Hanja sound
+        str.replace("%Q", "");
+        str.replace("%q", "");
 
         return str;
     }
